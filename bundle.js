@@ -30073,7 +30073,6 @@ module.exports={
     require('dotenv').config()
 },{"dotenv":174}]},{},[176]);
 
-
     // Initialize Firebase
     var config = {
       apiKey: process.env.APIkey,
