@@ -1,0 +1,103 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/x-icon" href="favicon.jpg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discussion - Cat Internet Preview</title>
+
+<style>
+body {
+margin: auto;
+}
+
+@font-face { font-family: SegoeUIRegular; src: url('SegoeUIRegular.ttf'); } 
+         p {
+         font-family: SegoeUIRegular
+         }
+		 h1 {
+         font-family: SegoeUIRegular
+         }
+		 h2 {
+         font-family: SegoeUIRegular
+         }
+		 h3 {
+         font-family: SegoeUIRegular
+         }
+		 h4 {
+         font-family: SegoeUIRegular
+         }
+		 h5 {
+         font-family: SegoeUIRegular
+         }
+		 a {
+         font-family: SegoeUIRegular
+         }
+</style>
+</head>
+<body style="margin: auto;">
+  <div style="display: flex; background-color:chocolate;"><img style="margin-right: 5px;" src="logo.png" width=50> <h3 style="color: white; margin: auto;">Cat Internet Preview</h1> <a href="https://www.catinternet.website/CatInternet.apk"><img src="android.png" width=130></a></div>
+
+  <div style="background-color:orange;"><h1 style="color: white; margin: auto;">Discussion</h1></div>
+  <div id="discussion-container"></div>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: process.env.GITHUB_SECRET_FIREBASE_API_KEY,
+      databaseURL: process.env.GITHUB_SECRET_FIREBASE_DATABASE_URL,
+      projectId: process.env.GITHUB_SECRET_FIREBASE_PROJECT_ID,
+      storageBucket: process.env.GITHUB_SECRET_FIREBASE_STORAGE_BUCKET
+    };
+    firebase.initializeApp(config);
+
+    // Get a reference to the discussion directory
+    var discussionRef = firebase.database().ref('discussion');
+
+    // Listen for changes in the discussion directory
+    discussionRef.on('value', function(data) {
+      var discussionContainer = document.getElementById('discussion-container');
+      discussionContainer.innerHTML = '';
+
+      data.forEach(function(postData) {
+        var postHTML = '<div class="post">';
+        postHTML += '<div style="display: ruby;"><img src="' + getAvatarUrl(postData.child('avatar').val()) + '" width = 50>'; // Avatar
+        postHTML += '<h2 style="margin-right:5px ;">' + postData.child('playername').val() + '</h2>'; // Player Name
+        postHTML += '<h5>(' + postData.child('username').val() + ')</h5></div>'; // Player Name
+        postHTML += '<p>' + postData.child('content').val() + '</p>'; // Content
+        if (postData.child('pin').val()) {
+          postHTML += '<span class="pin">Pin</span>';
+        }
+        if (postData.hasChild('reply')) {
+          var replyHTML = '<div class="reply">';
+          replyHTML += '<h3><b>Replying to: </b>' + postData.child('reply').val() + '</h3>'; // Reply Username
+          replyHTML += '</div>';
+          postHTML += replyHTML;
+        }
+        if (postData.hasChild('youtubeconnection')) {
+          var youtubeHTML = '<a href="' + postData.child('youtubeconnection').val() + '"><img src="youtube.png" width=50></a>';
+          postHTML += youtubeHTML;
+        }
+        postHTML += '</div>';
+        discussionContainer.innerHTML += postHTML;
+      });
+    });
+
+    // Helper function to get the avatar URL
+    function getAvatarUrl(avatar) {
+      if (isNaN(parseInt(avatar))) return '';
+      var avatarNumber = parseInt(avatar);
+      var avatarDir = 'avatars/cat';
+      for (var i = 0; i < 35; i++) {
+        var fileExtension = (i + 1).toString().padStart(2, '0') + '.png';
+        if (fileExtension === avatarNumber.toString().padStart(2, '0') + '.png') {
+          return avatarDir + fileExtension;
+        }
+      }
+    }
+  </script>
+</body>
+</html>
