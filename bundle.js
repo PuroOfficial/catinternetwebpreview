@@ -30070,13 +30070,12 @@ module.exports={
 }
 
 },{}],176:[function(require,module,exports){
+(function (process){(function (){
     require('dotenv').config()
-},{"dotenv":174}]},{},[176]);
-
     // Initialize Firebase
     var config = {
       apiKey: process.env.APIkey,
-      projectId: 'catadventure-catinternet',
+      projectId: process.env.ProID,
       databaseURL: process.env.DBtype
     };
     firebase.initializeApp(config);
@@ -30125,3 +30124,5 @@ module.exports={
         }
       }
     }
+}).call(this)}).call(this,require('_process'))
+},{"_process":124,"dotenv":174}]},{},[176]);
