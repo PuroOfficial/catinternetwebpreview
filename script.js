@@ -2,6 +2,7 @@
     // Initialize Firebase
     var config = {
       apiKey: process.env.APIkey,
+      projectId: process.env.ProID,
       databaseURL: process.env.DBtype
     };
     firebase.initializeApp(config);
