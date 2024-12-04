@@ -30077,7 +30077,8 @@ module.exports={
     // Initialize Firebase
     var config = {
       apiKey: process.env.APIkey,
-      databaseURL: process.env.DBtype
+      databaseURL: process.env.DBtype,
+      projectId: process.env.AppID
     };
     firebase.initializeApp(config);
 
