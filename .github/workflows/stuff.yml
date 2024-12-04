@@ -1,0 +1,5 @@
+steps:
+  - name: handler
+    env: # Or as an environment variable
+      API: ${{ secrets.FIREBASE_API_KEY}}
+      DB: ${{ secrets.DB_TYPE}}
