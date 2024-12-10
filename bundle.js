@@ -30109,9 +30109,6 @@ module.exports={
         }
         postHTML += '</div>';
         discussionContainer.innerHTML += postHTML;
-
-  	// Add the post to the beginning of the container
-  	discussionContainer.prepend(postHTML);
       });
     });
 
