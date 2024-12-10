@@ -60,11 +60,31 @@ margin: 2px;
   <br>
   <br>
   <br>
+  <br>
 
   <div id="discussion-container" style="display: flex; flex-direction: column-reverse;"></div>
+
+  <div id="loadingdiv">
+  <center><img src="loadingAnim.gif">
+  <p>The discussion are currently loading, takes 25 seconds! Hold on!</p></center>
+  </div>
 
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
   <script src="bundle.js"></script>
+
+  <script>
+    function delay(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function loadingDisappear() {
+        var loadingDiv = document.getElementById('loadingdiv');
+        await delay(7000); // Wait for 2 seconds
+        loadingDiv.remove();
+    }
+
+    loadingDisappear();
+  </script>
 </body>
 </html>
