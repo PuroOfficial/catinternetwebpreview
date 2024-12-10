@@ -30087,6 +30087,7 @@ module.exports={
     discussionRef.on('value', function(data) {
       var discussionContainer = document.getElementById('discussion-container');
       discussionContainer.innerHTML = '';
+
       data.forEach(function(postData) {
         var postHTML = '<div class="post">';
         postHTML += '<div class="posttext" style="display: ruby;"><img src="' + getAvatarUrl(postData.child('avatar').val()) + '" width = 50>'; // Avatar
@@ -30108,9 +30109,6 @@ module.exports={
         }
         postHTML += '</div>';
         discussionContainer.innerHTML += postHTML;
-
-  	// Add the post to the beginning of the container
-  	discussionContainer.prepend(postHTML);
       });
     });
 
