@@ -30087,6 +30087,13 @@ module.exports={
     discussionRef.on('value', function(data) {
       var discussionContainer = document.getElementById('discussion-container');
       discussionContainer.innerHTML = '';
+    // Get a reference to the discussion directory
+    var discussionRef = firebase.database().ref('discussion');
+
+    // Listen for changes in the discussion directory
+    discussionRef.on('value', function(data) {
+      var discussionContainer = document.getElementById('discussion-container');
+      discussionContainer.innerHTML = '';
 
       data.forEach(function(postData) {
         var postHTML = '<div class="post">';
@@ -30108,7 +30115,8 @@ module.exports={
           postHTML += youtubeHTML;
         }
         postHTML += '</div>';
-          
+        discussionContainer.innerHTML += postHTML;
+
         // Add the post to the beginning of the container
         discussionContainer.prepend(postHTML);
       });
