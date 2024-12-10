@@ -12,6 +12,10 @@ body {
 margin: auto;
 }
 
+.post-text {
+color: white;
+}
+
 @font-face { font-family: SegoeUIRegular; src: url('SegoeUIRegular.ttf'); } 
          p {
          font-family: SegoeUIRegular
@@ -37,9 +41,16 @@ margin: auto;
 </style>
 </head>
 <body style="margin: auto;">
-  <div style="display: flex; background-color:chocolate;"><img style="margin-right: 5px;" src="logo.png" width=50> <h3 style="color: white; margin: auto;">Cat Internet Preview</h1> <a href="https://www.catinternet.website/CatInternet.apk"><img src="android.png" width=130></a></div>
+  <div style="position: fixed; width: -webkit-fill-available; top: 0px; display: flex; background-color:chocolate;"><img style="margin-right: 5px;" src="logo.png" width=50> <h3 style="color: white; margin: auto;">Cat Internet Preview</h1> <a href="https://www.catinternet.website/CatInternet.apk"><img src="android.png" width=130></a></div>
 
-  <div style="background-color:orange;"><h1 style="color: white; margin: auto;">Discussion</h1></div>
+  <div style="position: fixed; width: -webkit-fill-available; top: 50px; background-color:orange;"><h1 style="color: white; margin: auto;">Discussion</h1></div>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
   <div id="discussion-container"></div>
 
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>

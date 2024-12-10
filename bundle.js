@@ -30090,10 +30090,10 @@ module.exports={
 
       data.forEach(function(postData) {
         var postHTML = '<div class="post">';
-        postHTML += '<div style="display: ruby;"><img src="' + getAvatarUrl(postData.child('avatar').val()) + '" width = 50>'; // Avatar
-        postHTML += '<h2 style="margin-right:5px ;">' + postData.child('playername').val() + '</h2>'; // Player Name
-        postHTML += '<h5>(' + postData.child('username').val() + ')</h5></div>'; // Player Name
-        postHTML += '<p>' + postData.child('content').val() + '</p>'; // Content
+        postHTML += '<div id="post-text" style="display: ruby;"><img src="' + getAvatarUrl(postData.child('avatar').val()) + '" width = 50>'; // Avatar
+        postHTML += '<h2 id="post-text" style="margin-right:5px ;">' + postData.child('playername').val() + '</h2>'; // Player Name
+        postHTML += '<h5 id="post-text">(' + postData.child('username').val() + ')</h5></div>'; // Player Name
+        postHTML += '<p id="post-text">' + postData.child('content').val() + '</p>'; // Content
         if (postData.child('pin').val()) {
           postHTML += '<span class="pin">Pin</span>';
         }
