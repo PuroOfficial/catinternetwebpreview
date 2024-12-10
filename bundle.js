@@ -30083,13 +30083,8 @@ module.exports={
     // Get a reference to the discussion directory
     var discussionRef = firebase.database().ref('discussion');
 
-    // Flag to track if a cooldown is in progress
-    let cooldownActive = false;
-
     // Listen for changes in the discussion directory
     discussionRef.on('value', function(data) {
-  if (!cooldownActive) {
-      cooldownActive = true; // Set cooldown flag
       var discussionContainer = document.getElementById('discussion-container');
       discussionContainer.innerHTML = '';
 
@@ -30115,12 +30110,6 @@ module.exports={
         postHTML += '</div>';
         discussionContainer.innerHTML += postHTML;
       });
-
-      // Set a timeout to reset the cooldown flag after 30 milliseconds
-      setTimeout(() => {
-        cooldownActive = false;
-      }, 30);
-    }
     });
 
     // Helper function to get the avatar URL
