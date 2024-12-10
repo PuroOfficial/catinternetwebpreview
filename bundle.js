@@ -30115,13 +30115,13 @@ module.exports={
         postHTML += '</div>';
         discussionContainer.innerHTML += postHTML;
       });
-    });
 
-    // Set a timeout to reset the cooldown flag after 30 milliseconds
-    setTimeout(() => {
-      cooldownActive = false;
-    }, 30);
-  }
+      // Set a timeout to reset the cooldown flag after 30 milliseconds
+      setTimeout(() => {
+        cooldownActive = false;
+      }, 30);
+    }
+    });
 
     // Helper function to get the avatar URL
     function getAvatarUrl(avatar) {
