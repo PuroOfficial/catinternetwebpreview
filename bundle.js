@@ -30090,16 +30090,16 @@ module.exports={
 
       data.forEach(function(postData) {
         var postHTML = '<div class="post">';
-        postHTML += '<div id="posttext" style="display: ruby;"><img src="' + getAvatarUrl(postData.child('avatar').val()) + '" width = 50>'; // Avatar
-        postHTML += '<h2 id="posttext" style="margin-right:5px ;">' + postData.child('playername').val() + '</h2>'; // Player Name
-        postHTML += '<h5 id="posttext">(' + postData.child('username').val() + ')</h5></div>'; // Player Name
-        postHTML += '<p id="posttext">' + postData.child('content').val() + '</p>'; // Content
+        postHTML += '<div class="posttext" style="display: ruby;"><img src="' + getAvatarUrl(postData.child('avatar').val()) + '" width = 50>'; // Avatar
+        postHTML += '<h2 class="posttext" style="margin-right:5px ;">' + postData.child('playername').val() + '</h2>'; // Player Name
+        postHTML += '<h5 class="posttext">(' + postData.child('username').val() + ')</h5></div>'; // Player Name
+        postHTML += '<p class="posttext postcontent">' + postData.child('content').val() + '</p>'; // Content
         if (postData.child('pin').val()) {
           postHTML += '<span class="pin">Pin</span>';
         }
         if (postData.hasChild('reply')) {
           var replyHTML = '<div class="reply">';
-          replyHTML += '<h3 id="posttext"><b>Replying to: </b>' + postData.child('reply').val() + '</h3>'; // Reply Username
+          replyHTML += '<h3 class="posttext"><b>Replying to: </b>' + postData.child('reply').val() + '</h3>'; // Reply Username
           replyHTML += '</div>';
           postHTML += replyHTML;
         }
